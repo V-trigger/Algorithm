@@ -13,10 +13,6 @@ public class ArrayQueueTest {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while (loop){
-//            System.out.println("s(show): 显示队列");
-//            System.out.println("e(exit): 退出");
-//            System.out.println("a(add): 添加数据");
-//            System.out.println("g(show): 取出数据");
             System.out.println("s(show): 显示队列; a(add): 添加数据; p(pop): 取出数据; e(exit): 退出");
             System.out.print("请输入: ");
             key = scanner.next().charAt(0);

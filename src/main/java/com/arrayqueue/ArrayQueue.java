@@ -6,13 +6,6 @@ import java.util.Arrays;
 /**
  * 数组模拟环形队列
  *
- *
- *
- *
- *
- *
- *
- *
  */
 public class ArrayQueue {
 
