@@ -1,13 +1,11 @@
 package com.linkedlist;
 
 
-import javax.xml.transform.Source;
-import java.util.Arrays;
-import java.util.Objects;
-
 /**
  *
- * 带头结点的单向列表
+ * 单向列表
+ * 只能单向查找
+ * 不能自我删除
  *
  */
 public class SingleLinkedList<T> {
