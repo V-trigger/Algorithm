@@ -1,7 +1,7 @@
 package com.stack;
 
 /**
- * 数组实现栈
+ * 数组模拟栈
  */
 public class Stack {
 
