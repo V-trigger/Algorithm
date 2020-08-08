@@ -9,16 +9,19 @@ public class PolandNotation {
 
     public static void main(String[] args) {
         //(1+2)*3-4   1 2 + 3 * 4 -
-        String suffixExpression = "1 2 + 3 * 4 -";
+        String expression = "1+((2+3)*4)-12";
+        Stack<String> suffixExpression = PolandNotationConvert.convert(expression);
 
-        Stack<Integer> stack = new Stack<>(suffixExpression.length());
+        Stack<Integer> stack = new Stack<>(expression.length());
+
         //对表达式进行遍历
-        String str[] = suffixExpression.split(" ");
         int num1;
         int num2;
         int res;
         char operate[] = new char[1];
-        for(String s : str){
+        String s;
+        while (!suffixExpression.isEmpty()){
+            s = suffixExpression.pop();
             if(s.matches("\\d+")){
                 //如果遇到数字则直接入栈
                 Integer num = Integer.valueOf(s);
