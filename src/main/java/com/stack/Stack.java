@@ -3,22 +3,21 @@ package com.stack;
 /**
  * 数组模拟栈
  */
-public class Stack {
+public class Stack<T> {
 
     private int maxSize; //栈的大小
 
-    private int stack[];
+    private T stack[];
 
     private int top = -1; //栈顶
 
     public Stack(int maxSize) {
         this.maxSize = maxSize;
-        stack = new int[maxSize];
+        stack = (T[]) new Object[maxSize];
     }
 
-
     //入栈
-    public void push(int value){
+    public void push(T value){
         if(isFull()){
             System.out.println("栈满");
             return ;
@@ -28,11 +27,11 @@ public class Stack {
     }
 
     //出栈
-    public Integer pop(){
+    public T pop(){
         if(isEmpty()){
             return null;
         }
-        return stack[top--];
+        return (T) stack[top--];
     }
 
     public void show(){
@@ -40,6 +39,13 @@ public class Stack {
         while (offset >= 0){
             System.out.println(stack[offset--]);
         }
+    }
+
+    public T peek(){
+        if(isEmpty()){
+            throw new RuntimeException("栈为空");
+        }
+        return stack[top];
     }
 
     public boolean isEmpty(){
