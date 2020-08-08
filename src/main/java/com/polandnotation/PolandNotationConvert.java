@@ -5,6 +5,7 @@ import com.stack.Stack;
 /**
  *
  * 中缀表达式转后缀表达式
+ * TODO: 小数兼容，空白、制表符过滤
  *
  */
 public class PolandNotationConvert {
