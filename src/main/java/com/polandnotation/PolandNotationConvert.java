@@ -43,7 +43,7 @@ public class PolandNotationConvert {
                 stack1.push(buff[i]);
                 offset++;
             } else if(')' == buff[i]){
-                //如果遇到右括号,则将符号栈中的符号依次弹出，直到遇到左括号为止
+                //如果遇到右括号,则将符号栈中的符号依次弹出，直到遇到左括号为止(左括号出栈，但不入表达式栈)
                 while (true){
                     operate = stack1.pop();
                     if(operate == '(') break;
