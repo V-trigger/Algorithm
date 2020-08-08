@@ -13,8 +13,8 @@ public class SingleLinkedList<T> {
     //节点类
     class Node<T> {
 
-        T value = null; //当前节点数据
-        Node<T> next = null;  //下一个节点数据
+        T value = null; //节点数据
+        Node<T> next = null;  //下一个节点
 
         //用于头结点初始化
         public Node(){}
@@ -48,7 +48,7 @@ public class SingleLinkedList<T> {
         temp.next = new Node<T>(value);
     }
 
-    //显示链表
+    //遍历链表
     public void show(){
         Node<T> temp = head;
         while (temp.next != null){
