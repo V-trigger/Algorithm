@@ -99,9 +99,6 @@ public class BubbleSorting {
          *
          *     第三轮
          *     ....重复
-         *
-         *
-         *
          */
         int count = 0;
         boolean flag;  //是否交换
@@ -121,7 +118,6 @@ public class BubbleSorting {
                     swap(arr, j, j-1);
                     flag = true;
                 }
-
             }
             if(!flag) break;
         }
