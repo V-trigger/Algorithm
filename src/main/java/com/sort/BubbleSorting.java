@@ -3,7 +3,8 @@ package com.sort;
 import java.util.Arrays;
 
 /**
- * 排序算法
+ * 冒泡排序
+ *
  */
 public class BubbleSorting {
 
@@ -19,19 +20,16 @@ public class BubbleSorting {
         long l = System.currentTimeMillis();
         System.out.println("冒泡排序");
         BubbleSorting.bubbleSort(arr);
-        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
 
         l = System.currentTimeMillis();
         System.out.println("冒泡排序 优化1");
         BubbleSorting.bubbleSort1(arr1);
-        System.out.println(Arrays.toString(arr1));
         System.out.println(System.currentTimeMillis() - l );
 
         l = System.currentTimeMillis();
         System.out.println("冒泡排序 优化2");
         BubbleSorting.bubbleSort2(arr2);
-        System.out.println(Arrays.toString(arr2));
         System.out.println(System.currentTimeMillis() - l );
     }
 
@@ -47,6 +45,7 @@ public class BubbleSorting {
          *
          *     对以上操作重复n次，每次不用比较已经排好的数(每次比较次数-1)
          *     直到最后一次比较完毕，数组就已经有序
+         *
          */
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
