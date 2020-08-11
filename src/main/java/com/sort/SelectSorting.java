@@ -16,9 +16,9 @@ import java.util.Arrays;
 public class SelectSorting {
 
     public static void main(String[] args) {
-        int arr[] = new int[80000];
-        for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 80000);
+        int arr[] = new int[100000];
+        for (int i = 0; i < 100000; i++) {
+            arr[i] = (int) (Math.random() * 100000);
         }
 
         long l = System.currentTimeMillis();
