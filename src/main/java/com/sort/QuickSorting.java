@@ -11,15 +11,15 @@ public class QuickSorting {
 
 
     public static void main(String[] args) {
-        int arr[] = new int[10];
-        for (int i = 0; i < 10; i++) {
-            arr[i] = (int) (Math.random() * 100000);
+        int arr[] = new int[10000000];
+        for (int i = 0; i < 10000000; i++) {
+            arr[i] = (int) (Math.random() * 10000000);
         }
 
         long l = System.currentTimeMillis();
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
         quickSort(arr, 0, arr.length-1);
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
 
     }
