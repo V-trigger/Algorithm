@@ -22,9 +22,9 @@ public class SelectSorting {
         }
 
         long l = System.currentTimeMillis();
-//        System.out.println(Arrays.toString(arr));
         SelectSorting.selectSort(arr);
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
 
     }
 
