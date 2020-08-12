@@ -17,10 +17,9 @@ public class QuickSorting {
         }
 
         long l = System.currentTimeMillis();
-//        System.out.println(Arrays.toString(arr));
         quickSort(arr, 0, arr.length-1);
-//        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
 
     }
 
