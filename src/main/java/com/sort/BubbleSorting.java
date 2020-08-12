@@ -21,16 +21,20 @@ public class BubbleSorting {
         System.out.println("冒泡排序");
         BubbleSorting.bubbleSort(arr);
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
+
 
         l = System.currentTimeMillis();
         System.out.println("冒泡排序 优化1");
         BubbleSorting.bubbleSort1(arr1);
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
 
         l = System.currentTimeMillis();
         System.out.println("冒泡排序 优化2");
         BubbleSorting.bubbleSort2(arr2);
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
     }
 
     //冒泡排序
