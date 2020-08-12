@@ -18,10 +18,9 @@ public class InsertSorting {
         }
 
         long l = System.currentTimeMillis();
-//        System.out.println(Arrays.toString(arr));
         InsertSorting.insertSort(arr);
-//        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
+        System.out.println(ToolSort.isSort(arr));
 
     }
 
