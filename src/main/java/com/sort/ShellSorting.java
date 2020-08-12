@@ -16,11 +16,9 @@ public class ShellSorting {
         }
 
         long l = System.currentTimeMillis();
-//        System.out.println(Arrays.toString(arr));
         ShellSorting.shellSort(arr);
-//        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
-//
+        System.out.println(ToolSort.isSort(arr));
     }
 
     public static void shellSort(int arr[]){
