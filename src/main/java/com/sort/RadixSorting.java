@@ -39,7 +39,7 @@ public class RadixSorting {
          */
         int len = arr.length;
         int maxLen = maxLength(arr);
-        int bucket[][] = new int[10][len];  //定义桶
+        int bucket[][] = new int[10][len];  //定义桶 占len * 11 * 4个Byte = 44*len / 1024 /1024/ 1024 个G
         int bucketIndex[];   //每个桶放了多少个元素
 
         int index; //放入的桶的索引
