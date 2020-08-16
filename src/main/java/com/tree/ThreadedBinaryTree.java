@@ -21,19 +21,22 @@ public class ThreadedBinaryTree {
         Node node3 = new Node(4, "学生4");
         Node node4 = new Node(5, "学生5");
         Node node5 = new Node(6, "学生6");
+        Node node6 = new Node(7, "学生7");
 
         root.setLeft(node1);
         root.setRight(node2);
         node1.setLeft(node3);
         node1.setRight(node4);
         node2.setLeft(node5);
+        node2.setRight(node6);
         ThreadedBinaryTree threadedBinaryTree = new ThreadedBinaryTree();
         threadedBinaryTree.setRoot(root);
 
-
-        threadedBinaryTree.postThreaded();
-        System.out.println(node5.getLeft());
-//        System.out.println("遍历线索化二叉树");
+//        System.out.println("前序遍历线索化二叉树");
+//        threadedBinaryTree.preThreaded();
+//        threadedBinaryTree.preThreadedOrder();
+//        System.out.println("中序遍历线索化二叉树");
+//        threadedBinaryTree.midThreaded();
 //        threadedBinaryTree.midThreadedOrder();
     }
 
@@ -123,6 +126,10 @@ public class ThreadedBinaryTree {
         this.root = root;
     }
 
+    public void preThreadedOrder(){
+        root.preThreadedOrder();
+    }
+
     public void midThreadedOrder(){
         root.midThreadedOrder();
     }
@@ -150,9 +157,40 @@ public class ThreadedBinaryTree {
             this.name = name;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        //前序遍历线索化二叉树
+        public void preThreadedOrder(){
+            Node node = this;
+            while (node != null){
+                //输出left节点指向左子树的全部节点
+                System.out.println(node);
+                while (node.getLeftType() == 0){
+                    node = node.getLeft();
+                    System.out.println(node);
+                }
+                node = node.getRight();
+            }
         }
+
+        //遍历中序线索化二叉树
+        public void midThreadedOrder(){
+            Node node = this;
+            while (node != null){
+                //遍历左子树，直到找到节点的left指向不是左子树的节点
+                //相当于就是找到中序遍历输出的第一个节点
+                while (node.getLeftType() == 0){
+                    node = node.getLeft();
+                }
+                System.out.println(node); //输出当前节点
+                //持续输出并更新right指向为后继节点的节点
+                //直到right指向不为后继节点的节点
+                while (node.getRightType() == 1){
+                    node = node.getRight();
+                    System.out.println(node);
+                }
+                node = node.getRight();
+            }
+        }
+
 
         public void setLeftType(byte leftType) {
             this.leftType = leftType;
@@ -162,13 +200,6 @@ public class ThreadedBinaryTree {
             this.rightType = rightType;
         }
 
-        public int getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
 
         public Node getLeft() {
             return left;
@@ -186,10 +217,6 @@ public class ThreadedBinaryTree {
             return rightType;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
-
         public void setLeft(Node left) {
             this.left = left;
         }
@@ -198,25 +225,7 @@ public class ThreadedBinaryTree {
             this.right = right;
         }
 
-        //遍历中序线索化二叉树
-        public void midThreadedOrder(){
-            Node node = this;
-            while (node != null){
-                //遍历左子树，直到找到节点的left指向不是左子树的节点
-                //相当于就是找到中序遍历输出的第一个节点
-                while (node.getLeftType() == 0){
-                    node = node.getLeft();
-                }
-                System.out.println(node); //输出当前节点
-                //持续输出并更新right指向为后继节点的节点
-                //直到right指向不为后继节点的节点，相当于
-                while (node.getRightType() == 1){
-                    node = node.getRight();
-                    System.out.println(node);
-                }
-                node = node.getRight();
-            }
-        }
+
 
 
         @Override
