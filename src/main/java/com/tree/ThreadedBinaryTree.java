@@ -31,8 +31,8 @@ public class ThreadedBinaryTree {
         threadedBinaryTree.setRoot(root);
 
 
-        threadedBinaryTree.preThreaded();
-        System.out.println(node2.getRight());
+        threadedBinaryTree.postThreaded();
+        System.out.println(node5.getLeft());
 //        System.out.println("遍历线索化二叉树");
 //        threadedBinaryTree.midThreadedOrder();
     }
@@ -45,6 +45,11 @@ public class ThreadedBinaryTree {
     public void midThreaded() {
         pre = null;
         this.midThreaded(root);
+    }
+
+    public void postThreaded() {
+        pre = null;
+        this.postThreaded(root);
     }
 
 
@@ -81,6 +86,23 @@ public class ThreadedBinaryTree {
 
         //线索化右子树
         midThreaded(node.getRight());
+
+    }
+
+    //后序线索化二叉树
+    public void postThreaded(Node node) {
+
+        if(node == null) return;
+
+        //线索化左子树
+        postThreaded(node.getLeft());
+
+        //线索化右子树
+        postThreaded(node.getRight());
+
+        //线索化当前节点
+        threadedNode(node);
+        pre = node;
 
     }
 
