@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class HuffmanDecode {
 
-    private String str;
+    private String content;
 
     public HuffmanDecode(Map<Character, String> huffmanCodes, byte[] codes){
         decode(huffmanCodes, codes);
@@ -45,7 +45,7 @@ public class HuffmanDecode {
             str.append(character);
             i += offset;
         }
-        this.str = str.toString();
+        this.content = str.toString();
     }
 
     /**
@@ -101,7 +101,7 @@ public class HuffmanDecode {
         return str;
     }
 
-    public String getStr() {
-        return str;
+    public String getContent() {
+        return content;
     }
 }
