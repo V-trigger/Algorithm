@@ -20,10 +20,11 @@ public class HuffmanTest {
 
     @Test
     public void testDecode(){
-        String str = "this is a pen, this is a apple";
+        String str = "i'am a single dog, i want to get a Object";
 
         HuffmanEncode huffmanEncode = new HuffmanEncode(str);
         byte[] code = huffmanEncode.getCode();
+        System.out.println(Arrays.toString(code));
         Map<Character, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
 
         HuffmanDecode huffmanDecode = new HuffmanDecode(huffmanCodes, code);
