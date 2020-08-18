@@ -74,14 +74,34 @@ public class HuffmanEncode {
             codesStr.append(huffmanCodes.get(c));
         }
 
-        byte code[] = new byte[(codesStr.length() + 7) / 8];
+        //(codesStr.length() + 7) / 8 表示8位需要1个长度,9为需要2个长度....
+        //多出一位存放最后一个byte高位0的个位
+        byte code[] = new byte[(codesStr.length() + 7) / 8 + 1];
         int offset = 0;
+        //临时存放每个byte的二进制字符串
         String codeStr;
         for (int i = 0; i < codesStr.length(); i+=8) {
-            codeStr = i+8 > codesStr.length() ? codesStr.substring(i) : codesStr.substring(i,i+8);
+            codeStr = i+8 > codesStr.length() ? codesStr.substring(i) : codesStr.substring(i, i+8);
             code[offset] = (byte) Integer.parseInt(codeStr, 2);
             offset++;
         }
+        //记录最后一个byte高位出现0的个数
+        int lastOffset = codesStr.length() % 8;
+        String lastByte;
+        if(lastOffset == 0){
+            lastByte = codesStr.substring(codesStr.length() - 8);
+        } else {
+            lastByte = codesStr.substring(codesStr.length() - lastOffset);
+        }
+        byte zeroCount = 0;
+        for (int i = 0; i < lastByte.length(); i++) {
+            if(lastByte.charAt(i) == '0'){
+                zeroCount++;
+            } else {
+                break;
+            }
+        }
+        code[code.length - 1] = zeroCount;
         this.code = code;
     }
 
