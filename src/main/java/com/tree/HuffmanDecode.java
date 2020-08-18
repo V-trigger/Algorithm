@@ -9,19 +9,6 @@ import java.util.*;
  */
 public class HuffmanDecode {
 
-    public static void main(String[] args) {
-        String str = "this is a pen, this is a apple";
-
-        HuffmanEncode huffmanEncode = new HuffmanEncode(str);
-        byte[] code = huffmanEncode.getCode();
-        System.out.println(Arrays.toString(code));
-        Map<Character, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
-
-        HuffmanDecode huffmanDecode = new HuffmanDecode(huffmanCodes, code);
-        String str1 = huffmanDecode.getStr();
-        System.out.println(str);
-    }
-
     private String str;
 
     public HuffmanDecode(Map<Character, String> huffmanCodes, byte[] codes){
@@ -36,10 +23,7 @@ public class HuffmanDecode {
      */
     private void decode(Map<Character, String> huffmanCodes, byte[] codes){
         //获取原始编码字符串
-        StringBuilder codesStr = new StringBuilder();
-        for (int i = 0; i < codes.length; i++) {
-            codesStr.append(byteToBit(codes[i], i != codes.length -1));
-        }
+        StringBuilder codesStr = byteToBit(codes);
         //编码表 编码 -> 字符
         Map<String, Character> map = new HashMap<>();
         for(Map.Entry<Character, String> entry : huffmanCodes.entrySet()){
@@ -62,6 +46,42 @@ public class HuffmanDecode {
             i += offset;
         }
         this.str = str.toString();
+    }
+
+    /**
+     * 获取原始编码二进制字符串
+     * @param codes
+     * @return
+     */
+    private StringBuilder byteToBit(byte[] codes){
+        StringBuilder codesStr = new StringBuilder();
+        int temp;
+        boolean isPadding; //是否需要补高位
+        String str; //临时存放byte对应的二进制字符串
+        for (int i = 0; i < codes.length - 1; i++) {
+            temp = codes[i];
+            //只有最后一位不需要补高位
+            isPadding = i != codes.length - 2;
+            /*
+             * 判断是否是编码实际内容的最后一个byte
+             * 由于编码的最后一个byte存放了最后一个byte高位的0的个数
+             * 所以倒数第一个才是实际内容的最后一个byte
+             */
+            if(isPadding) {
+                //按位或1 0000 0000再截取掉低八位，就完成了高位补0
+                temp |= 256;
+                str = Integer.toBinaryString(temp);
+                codesStr.append(str.substring(str.length()-8));
+            } else {
+                str = Integer.toBinaryString(temp);
+                //最后一位不需要补高位,但是需要补上高位出现的0
+                String zeroStr = "0".repeat(codes[codes.length-1]);
+                codesStr.append(zeroStr);
+                if(!"0".equals(str)) codesStr.append(str);
+
+            }
+        }
+        return codesStr;
     }
 
 
