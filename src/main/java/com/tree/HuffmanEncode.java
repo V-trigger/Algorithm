@@ -30,14 +30,6 @@ import java.util.*;
  */
 public class HuffmanEncode {
 
-    public static void main(String args[]){
-        String str = "this is a pen, this is a apple";
-        HuffmanEncode huffmanEncode = new HuffmanEncode(str);
-        byte[] code = huffmanEncode.getCode();
-        System.out.println(Arrays.toString(code));
-
-    }
-
     //赫夫曼树的根节点
     private Node root;
 
@@ -156,6 +148,10 @@ public class HuffmanEncode {
         }
 
         this.nodes = nodes;
+    }
+
+    public Map<Character, String> getHuffmanCodes() {
+        return huffmanCodes;
     }
 
     public byte[] getCode() {
