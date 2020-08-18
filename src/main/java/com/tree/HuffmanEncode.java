@@ -32,10 +32,8 @@ public class HuffmanEncode {
 
     public static void main(String args[]){
         String str = "this is a pen, this is a apple";
-//        String str = "i like like like java do you like a java";
         HuffmanEncode huffmanEncode = new HuffmanEncode(str);
         byte[] code = huffmanEncode.getCode();
-
         System.out.println(Arrays.toString(code));
 
     }
