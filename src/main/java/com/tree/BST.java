@@ -27,6 +27,15 @@ public class BST {
 //        System.out.println(search.getParent());
         System.out.println();
         bst.del(6);
+        bst.del(8);
+        bst.del(9);
+        bst.del(10);
+        bst.del(7);
+        bst.del(3);
+//        bst.del(2);
+        bst.del(4);
+        bst.del(2);
+
         bst.midOrder();
     }
 
@@ -96,28 +105,45 @@ public class BST {
 
         //待删除的节点只有左子树
         if(node.left != null){
-            //判断待删除的节点是父节点的左子节点还是右子节点
-            if(node.parent.left != null && node.parent.left.value == node.value){
-                node.parent.left = node.left;
+            //待删除节点是否是根节点
+            if(node.parent != null) {
+                //判断待删除的节点是父节点的左子节点还是右子节点
+                node.left.parent = node.parent;
+                if (node.parent.left != null && node.parent.left.value == node.value) {
+                    node.parent.left = node.left;
+                } else {
+                    node.parent.right = node.left;
+                }
             } else {
-                node.parent.right = node.left;
+                //删除的是根节点, 将根节点替换为左子节点
+                node.left.parent = null;
+                root = node.left;
             }
             return;
         }
 
         //待删除的节点只有右子树
         if(node.right != null){
-            //判断待删除的节点是父节点的左子节点还是右子节点
-            if(node.parent.left != null && node.parent.left.value == node.value){
-                node.parent.left = node.right;
+            //待删除节点是否是根节点
+            if(node.parent != null) {
+                //判断待删除的节点是父节点的左子节点还是右子节点
+                node.right.parent = node.parent;
+                if (node.parent.left != null && node.parent.left.value == node.value) {
+                    node.parent.left = node.right;
+                } else {
+                    node.parent.right = node.right;
+                }
             } else {
-                node.parent.right = node.right;
+                //删除的是根节点, 将根节点替换为右子节点
+                node.right.parent = null;
+                root = node.right;
             }
         }
 
     }
 
     public void midOrder(){
+        if(root == null) return;
         root.midOrder();
     }
 
@@ -186,9 +212,6 @@ public class BST {
             }
         }
 
-        public Node getParent() {
-            return parent;
-        }
 
         @Override
         public String toString() {
