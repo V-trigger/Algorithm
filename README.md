@@ -19,6 +19,7 @@
    - [赫夫曼树](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/HuffmanTree.java " ")
       - [赫夫曼编码 数据压缩](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/HuffmanDecode.java " ")
       - [赫夫曼编码 数据解压](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/HuffmanDecode.java " ")
+   - [二叉排序树](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/BST.java " ")
 - 查找
    - [二分查找](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/search/BinarySearch.java " ")
    - [插值查找](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/search/InterpolationSearch.java " ")
