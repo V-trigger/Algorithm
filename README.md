@@ -30,4 +30,6 @@
    - [快速排序](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/sort/QuickSorting.java " ")
    - [归并排序](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/sort/MergeSorting.java " ")
    - [基数排序](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/sort/RadixSorting.java " ")
+- 递归
+   - [八皇后问题](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/recursion/EightQueen.java " ")
    
