@@ -10,8 +10,8 @@
    - [环形链表](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/linkedlist/CycleChain.java " ")
 - [稀疏矩阵](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/sparsematrix/SparseMatrix.java " ")
 - [栈](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/stack/Stack.java " ")
-   -[中缀表达式转后缀表达式](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/polandnotation/PolandNotationConvert.java " ")
-   -[后缀表达式的运算](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/polandnotation/PolandNotation.java " ")
+   - [中缀表达式转后缀表达式](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/polandnotation/PolandNotationConvert.java " ")
+   - [后缀表达式的运算](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/polandnotation/PolandNotation.java " ")
 - 树
    - [二叉树](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/BinaryTree.java " ")
    - [顺序存储二叉树](https://github.com/V-trigger/Algorithm/blob/master/src/main/java/com/tree/ArrBinaryTree.java " ")
