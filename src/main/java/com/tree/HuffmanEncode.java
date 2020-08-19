@@ -37,21 +37,21 @@ public class HuffmanEncode {
     private List<Node> nodes;
 
     //字符对应的赫夫曼编码
-    private Map<Character, String> huffmanCodes = new HashMap<>();
+    private Map<Byte, String> huffmanCodes = new HashMap<>();
 
-    //待编码的字符数组
-    private char[] chars;
+    //待编码的字节数组
+    private byte[] bytes;
 
     //赫夫曼编码
     private byte[] code;
 
-    public HuffmanEncode(String value){
-        encode(value);
+    public HuffmanEncode(byte[] bytes){
+        this.bytes = bytes;
+        encode();
     }
 
     //进行编码
-    private void encode(String value){
-        chars = value.toCharArray();
+    private void encode(){
         //根据字符构建森林
         buildNodeList();
         //构建赫夫曼树
@@ -70,8 +70,8 @@ public class HuffmanEncode {
      */
     private void compress(){
         StringBuilder codesStr = new StringBuilder();
-        for(char c : chars){
-            codesStr.append(huffmanCodes.get(c));
+        for(byte b : bytes){
+            codesStr.append(huffmanCodes.get(b));
         }
 
         //(codesStr.length() + 7) / 8 表示8位需要1个长度,9为需要2个长度....
@@ -153,24 +153,24 @@ public class HuffmanEncode {
      */
     private void buildNodeList(){
         List<Node> nodes = new ArrayList<>();
-        Map<Character, Integer> map = new HashMap<>();
-        //获取每个字符出现的次数
-        for (char c : chars){
-            if(map.containsKey(c)){
-                map.put(c, map.get(c) + 1);
+        Map<Byte, Integer> map = new HashMap<>();
+        //获取每个字节出现的次数
+        for (byte b : bytes){
+            if(map.containsKey(b)){
+                map.put(b, map.get(b) + 1);
             } else {
-                map.put(c, 1);
+                map.put(b, 1);
             }
         }
         //生成node并放入list
-        for(Map.Entry<Character, Integer> entry : map.entrySet()){
+        for(Map.Entry<Byte, Integer> entry : map.entrySet()){
             nodes.add(new Node(entry.getValue(), entry.getKey()));
         }
 
         this.nodes = nodes;
     }
 
-    public Map<Character, String> getHuffmanCodes() {
+    public Map<Byte, String> getHuffmanCodes() {
         return huffmanCodes;
     }
 
@@ -185,13 +185,13 @@ public class HuffmanEncode {
     class Node implements Comparable<Node>{
         private int weight; //权值
 
-        private Character data;  //字符
+        private Byte data;  //字符
 
         private Node left;  //左子节点
 
         private Node right; //右子节点
 
-        public Node(int weight, Character data) {
+        public Node(int weight, Byte data) {
             this.weight = weight;
             this.data = data;
         }

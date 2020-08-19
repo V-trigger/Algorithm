@@ -14,7 +14,7 @@ public class HuffmanTest {
     public void testEncode(){
         String str = "this is a pen, this is a apple";
 
-        HuffmanEncode huffmanEncode = new HuffmanEncode(str);
+        HuffmanEncode huffmanEncode = new HuffmanEncode(str.getBytes());
         byte[] code = huffmanEncode.getCode();
         System.out.println(Arrays.toString(code));
     }
@@ -23,13 +23,13 @@ public class HuffmanTest {
     public void testDecode(){
         String str = "i'am a single dog, i want to get a Object";
 
-        HuffmanEncode huffmanEncode = new HuffmanEncode(str);
+        HuffmanEncode huffmanEncode = new HuffmanEncode(str.getBytes());
         byte[] code = huffmanEncode.getCode();
         System.out.println(Arrays.toString(code));
-        Map<Character, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
+        Map<Byte, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
 
         HuffmanDecode huffmanDecode = new HuffmanDecode(huffmanCodes, code);
-        String str1 = huffmanDecode.getContent();
+        String str1 = new String(huffmanDecode.getBytes());
         System.out.println(str1);
     }
 
@@ -47,9 +47,9 @@ public class HuffmanTest {
             fileInputStream.read(buff);
             fileInputStream.close();
 
-            HuffmanEncode huffmanEncode = new HuffmanEncode(new String(buff));
+            HuffmanEncode huffmanEncode = new HuffmanEncode(buff);
             byte[] code = huffmanEncode.getCode();
-            Map<Character, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
+            Map<Byte, String> huffmanCodes = huffmanEncode.getHuffmanCodes();
 
             outputStream = new FileOutputStream("C:\\Users\\PTR\\Desktop\\compress\\test.jpg.zip");
             objectOutputStream = new ObjectOutputStream(outputStream);
@@ -83,15 +83,15 @@ public class HuffmanTest {
             objectInputStream = new ObjectInputStream(inputStream);
 
             byte[] codes = (byte[]) objectInputStream.readObject();
-            Map<Character, String> huffmanCode = (Map<Character, String>) objectInputStream.readObject();
+            Map<Byte, String> huffmanCode = (Map<Byte, String>) objectInputStream.readObject();
 
             HuffmanDecode huffmanDecode = new HuffmanDecode(huffmanCode, codes);
-            String content = huffmanDecode.getContent();
+            byte buff[] = huffmanDecode.getBytes();
 
             outputStream = new FileOutputStream("C:\\Users\\PTR\\Desktop\\compress\\test1.jpg");
-            outputStream.write(content.getBytes());
+            outputStream.write(buff);
         } catch (Exception e){
-
+            System.out.println(e.getMessage());
         } finally {
             try {
                 outputStream.close();

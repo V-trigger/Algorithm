@@ -9,9 +9,9 @@ import java.util.*;
  */
 public class HuffmanDecode {
 
-    private String content;
+    private byte[] bytes;
 
-    public HuffmanDecode(Map<Character, String> huffmanCodes, byte[] codes){
+    public HuffmanDecode(Map<Byte, String> huffmanCodes, byte[] codes){
         decode(huffmanCodes, codes);
     }
 
@@ -21,31 +21,32 @@ public class HuffmanDecode {
      * @param codes 赫夫曼编码
      * @return
      */
-    private void decode(Map<Character, String> huffmanCodes, byte[] codes){
+    private void decode(Map<Byte, String> huffmanCodes, byte[] codes){
         //获取原始编码字符串
         StringBuilder codesStr = byteToBit(codes);
         //编码表 编码 -> 字符
-        Map<String, Character> map = new HashMap<>();
-        for(Map.Entry<Character, String> entry : huffmanCodes.entrySet()){
+        Map<String, Byte> map = new HashMap<>();
+        for(Map.Entry<Byte, String> entry : huffmanCodes.entrySet()){
             map.put(entry.getValue(), entry.getKey());
         }
 
-        List<Character> list = new ArrayList<>();
-        StringBuilder str = new StringBuilder();
+        List<Byte> list = new ArrayList<>();
         int offset;
         for (int i = 0; i < codesStr.length();) {
             offset = 1;
-            Character character;
+            Byte b;
             while (true){
-                character = map.get(codesStr.substring(i, i+offset));
-                if(character != null) break;
+                b = map.get(codesStr.substring(i, i+offset));
+                if(b != null) break;
                 offset++;
             }
-            list.add(character);
-            str.append(character);
+            list.add(b);
             i += offset;
         }
-        this.content = str.toString();
+        bytes = new byte[list.size()];
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = list.get(i);
+        }
     }
 
     /**
@@ -101,7 +102,7 @@ public class HuffmanDecode {
         return str;
     }
 
-    public String getContent() {
-        return content;
+    public byte[] getBytes() {
+        return bytes;
     }
 }
