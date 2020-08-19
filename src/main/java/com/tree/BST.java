@@ -81,6 +81,8 @@ public class BST {
         //待删除的节点有两个子树
         if(node.left != null && node.right != null){
             //找出当前节点右子树中最小的节点
+            //就是右子树一直往左找到的最后一个节点
+            //这个节点肯定是一个叶子节点
             Node temp = node.right;
             while (temp.left != null){
                 temp = temp.left;
