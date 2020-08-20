@@ -10,6 +10,17 @@ package com.tree;
  */
 public class AVLTree {
 
+    public static void main(String[] args) {
+        AVLTree avl = new AVLTree();
+        avl.add(avl.buildNode(16));
+        avl.add(avl.buildNode(3));
+        avl.add(avl.buildNode(7));
+
+        avl.midOrder();
+        System.out.println(avl.root.deepth());
+
+    }
+
     private Node root;
 
     public void add(Node node){
@@ -28,6 +39,89 @@ public class AVLTree {
     public Node search(int value){
         if(root == null) return null;
         return root.search(value);
+    }
+
+    /**
+     * 删除节点
+     * @param value
+     */
+    public void del(int value){
+        if(root == null) return;
+
+        //待删除的节点
+        Node node = search(value);
+        if(node == null) return;
+
+        //BST只有一个根节点
+        if(root.left == null && root.right == null){
+            root = null;
+            return;
+        }
+
+        //待删除的节点是叶子节点
+        if(node.left == null && node.right == null){
+            //判断待删除的节点是父节点的左子节点还是右子节点
+            if(node.parent.left != null && node.parent.left.value == node.value){
+                node.parent.left = null;
+            } else {
+                node.parent.right = null;
+            }
+            return;
+        }
+
+        //待删除的节点有两个子树
+        if(node.left != null && node.right != null){
+            //找出当前节点右子树中最小的节点
+            //就是右子树一直往左找到的最后一个节点
+            //这个节点肯定是一个叶子节点
+            Node temp = node.right;
+            while (temp.left != null){
+                temp = temp.left;
+            }
+            //删除当前节点右子树中最小的节点
+            del(temp.value);
+            //将右子树中最小的节点的数据覆盖到待删除节点
+            node.value = temp.value;
+            return;
+        }
+
+        //待删除的节点只有左子树
+        if(node.left != null){
+            //待删除节点是否是根节点
+            if(node.parent != null) {
+                //判断待删除的节点是父节点的左子节点还是右子节点
+                node.left.parent = node.parent;
+                if (node.parent.left != null && node.parent.left.value == node.value) {
+                    node.parent.left = node.left;
+                } else {
+                    node.parent.right = node.left;
+                }
+            } else {
+                //删除的是根节点, 将根节点替换为左子节点
+                node.left.parent = null;
+                root = node.left;
+            }
+            return;
+        }
+
+        //待删除的节点只有右子树
+        if(node.right != null){
+            //待删除节点是否是根节点
+            if(node.parent != null) {
+                //判断待删除的节点是父节点的左子节点还是右子节点
+                node.right.parent = node.parent;
+                if (node.parent.left != null && node.parent.left.value == node.value) {
+                    node.parent.left = node.right;
+                } else {
+                    node.parent.right = node.right;
+                }
+            } else {
+                //删除的是根节点, 将根节点替换为右子节点
+                node.right.parent = null;
+                root = node.right;
+            }
+        }
+
     }
 
 
@@ -99,26 +193,28 @@ public class AVLTree {
             //设置新节点的左子树为当前节点的左子树
             if(this.left != null) {
                 this.left.parent = newNode;
-                newNode.left = this.left;
             }
+            newNode.left = this.left;
 
-            //设置新节点的右子树为当前节点的右子树的左子树
-            if(this.right != null && this.right.left != null){
-                this.right.left.parent = newNode;
+
+            if(this.right != null){
+                //设置新节点的右子树为当前节点的右子树的左子树
+                if(this.right.left != null){
+                    this.right.left.parent = newNode;
+                }
                 newNode.right = this.right.left;
-            }
 
-            //当前节点的值替换为右子节点的值
-            if(this.right != null) {
+                //当前节点的值替换为右子节点的值
                 this.value = this.right.value;
-            }
 
-            //当前节点的右子树替换为当前节点的右子树的右子树
-            if(this.right != null && this.right.right != null){
-                this.right.right.parent = this;
+                //当前节点的右子树替换为当前节点的右子树的右子树
+                if(this.right.right != null){
+                    this.right.right.parent = this;
+                }
                 this.right = this.right.right;
-            }
 
+
+            }
             //设置当前节点的左子树为新的节点
             newNode.parent = this;
             this.left = newNode;
@@ -145,22 +241,24 @@ public class AVLTree {
                 newNode.right = this.right;
             }
 
-            //设置临时节点的左子树为当前节点的左子树的右子树
-            if(this.left != null && this.left.right != null){
-                this.left.right.parent = newNode;
-                newNode.left = this.left.right;
-            }
 
-            //设置当前节点的值为当前节点的左子节点的值
             if(this.left != null){
-                this.value = this.left.value;
-            }
+                //设置临时节点的左子树为当前节点的左子树的右子树
+                if (this.left.right != null) {
+                    this.left.right.parent = newNode;
+                }
+                newNode.left = this.left.right;
 
-            //设置当前节点的左子树为当前节点的左子树的左子树
-            if(this.left != null && this.left.left != null){
-                this.left.left.parent = this.left;
+                //设置当前节点的值为当前节点的左子节点的值
+                this.value = this.left.value;
+
+                //设置当前节点的左子树为当前节点的左子树的左子树
+                if(this.left.left != null){
+                    this.left.left.parent = this.left;
+                }
                 this.left = this.left.left;
             }
+
 
             //设置当前节点的右子树为临时节点
             newNode.parent = this;
