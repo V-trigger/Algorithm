@@ -20,9 +20,9 @@ public class BinarySearch {
         ShellSorting.shellSort(arr);
         System.out.println(Arrays.toString(arr));
 //        System.out.println(arr.length-1);
-        int index1 = binarySearch(arr, 0,arr.length, 1);
+        int index1 = binarySearch(arr, 0,arr.length, 11);
         System.out.println(index1);
-        int index2 = binarySearch1(arr, 699);
+        int index2 = binarySearch1(arr, 11);
         System.out.println(index2);
     }
 
@@ -30,14 +30,14 @@ public class BinarySearch {
     public static int binarySearch(int arr[],int left, int right, int value){
 
         int mid = (right + left) /2;
-        if((mid == right || mid == left) && arr[mid] != value) return -1;
+        if(left > right) return  -1;
 
         if(arr[mid] == value){
             return mid;
         } else if(arr[mid] > value){
-            return binarySearch(arr, left, mid, value);
+            return binarySearch(arr, left, mid - 1, value);
         } else {
-            return binarySearch(arr, mid, right, value);
+            return binarySearch(arr, mid + 1, right, value);
         }
     }
 
@@ -47,17 +47,17 @@ public class BinarySearch {
         int left = 0;
         int right = arr.length;
         int mid = (right + left) /2;
-        while (true){
-            if((mid == right || mid == left) && arr[mid] != value) return -1;
+        while (left <= right){
             if(arr[mid] == value){
                 return mid;
             } else if(arr[mid] > value){
-                right = mid;
+                right = mid - 1;
             } else {
-                left = mid;
+                left = mid + 1;
             }
             mid = (right + left) /2;
         }
+        return -1;
     }
 
 }
