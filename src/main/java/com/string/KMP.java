@@ -41,7 +41,6 @@ public class KMP {
      */
     public static int kmpSearch(String text, String pattern){
         int[] pmt = KMP.PMT(pattern);
-
         for (int i = 0, j = 0; i < text.length(); i++) {
             while (j > 0 && text.charAt(i) != pattern.charAt(j)){
                 j = pmt[j-1];
