@@ -20,6 +20,13 @@ import java.util.Arrays;
  *       0 0 0 0 1 2 0   部分匹配值
  *
  *  KMP算法思想
+ *      文本串索引和模式串索引i，j 从0开始
+ *      逐个比较文本串i位和模式串j位是否相等
+ *      如果在模式串的j位失去匹配。就需要找j位前的字符串的公共前后缀的长度，也就是部分匹配值
+ *        由于除开最长公共前后缀的字符一定不是公共前后缀，所以不需要再比较
+ *        所以只需要将模式串向后移动 已匹配到的字符长度 - 最长公共前后缀(j - pmt[j-1]) 位
+ *        模式串后移。文本串不需要操作； 即将模式串索引向前移动即可
+ *        即为: j = j - (j - pmt[j-1]), j = pmt[j -1]
  *
  *
  */
@@ -27,7 +34,7 @@ public class KMP {
 
     public static void main(String[] args) {
         String str1 = "BBC ABCDAB ABCDABCDABDE";
-        String str2 = "ABCDABD";
+        String str2 = "ABDE";
 
         int i = kmpSearch(str1, str2);
         System.out.println(i);
@@ -41,14 +48,17 @@ public class KMP {
      */
     public static int kmpSearch(String text, String pattern){
         int[] pmt = KMP.PMT(pattern);
-        for (int i = 0, j = 0; i < text.length(); i++) {
-            while (j > 0 && text.charAt(i) != pattern.charAt(j)){
+        int i = 0, j = 0;
+        while (i < text.length()){
+            if(text.charAt(i) == pattern.charAt(j)){
+                i++;
+                j++;
+            } else if(j == 0){
+                i++;
+            } else {
                 j = pmt[j-1];
             }
-            if(text.charAt(i) == pattern.charAt(j)){
-                j++;
-            }
-            if(j == pattern.length()) return i - j + 1;
+            if(j == pattern.length()) return i - j;
         }
         return -1;
 
@@ -58,7 +68,7 @@ public class KMP {
     public static int[] PMT(String str){
         //长度为1的字符串，部分匹配值为0
         int PMT[] = new int[str.length()];
-        PMT[0] = 0;
+        PMT[0] = 1;
         for (int i = 1, j = 0; i < str.length(); i++) {
             if(str.charAt(i) == str.charAt(j)){
                 j++;
