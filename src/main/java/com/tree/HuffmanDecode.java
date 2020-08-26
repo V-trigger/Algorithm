@@ -76,13 +76,22 @@ public class HuffmanDecode {
             } else {
                 str = Integer.toBinaryString(temp);
                 //最后一位不需要补高位,但是需要补上高位出现的0
-                String zeroStr = "0".repeat(codes[codes.length-1]);
+                String zeroStr = repeatString("0", codes[codes.length - 1]);
+                System.out.println(zeroStr);
                 codesStr.append(zeroStr);
                 if(!"0".equals(str)) codesStr.append(str);
 
             }
         }
         return codesStr;
+    }
+
+    private String repeatString(String str, int n) {
+        StringBuilder sb = new StringBuilder(str);
+        for (int i = 1; i < n; i++) {
+            sb.append(str).append(str);
+        }
+        return sb.toString();
     }
 
 
