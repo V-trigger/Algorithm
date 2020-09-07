@@ -21,10 +21,7 @@ public class BST {
         bst.add(bst.buildNode(2));
         bst.add(bst.buildNode(4));
         bst.add(bst.buildNode(10));
-//        bst.midOrder();
 
-//        Node search = bst.search(4);
-//        System.out.println(search.getParent());
         System.out.println();
         bst.del(6);
         bst.del(8);
@@ -32,7 +29,6 @@ public class BST {
         bst.del(10);
         bst.del(7);
         bst.del(3);
-//        bst.del(2);
         bst.del(4);
         bst.del(2);
 
