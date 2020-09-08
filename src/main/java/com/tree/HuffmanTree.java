@@ -30,7 +30,6 @@ public class HuffmanTree {
 
     public static void main(String[] args) {
         int arr[] = {13,7,8,3,29,6,1};
-        //1,3,6,7,8,13,29
         HuffmanTree huffmanTree = buildHuffmanTree(arr);
         huffmanTree.prevOrder();
     }
