@@ -2,7 +2,6 @@ package com.arrayqueue;
 
 import java.util.Scanner;
 
-//
 public class ArrayQueueTest {
 
     public static void main(String[] args) {
