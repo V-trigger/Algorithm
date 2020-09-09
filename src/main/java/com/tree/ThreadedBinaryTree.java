@@ -32,12 +32,6 @@ public class ThreadedBinaryTree {
         ThreadedBinaryTree threadedBinaryTree = new ThreadedBinaryTree();
         threadedBinaryTree.setRoot(root);
 
-//        System.out.println("前序遍历线索化二叉树");
-//        threadedBinaryTree.preThreaded();
-//        threadedBinaryTree.preThreadedOrder();
-//        System.out.println("中序遍历线索化二叉树");
-//        threadedBinaryTree.midThreaded();
-//        threadedBinaryTree.midThreadedOrder();
     }
 
     public void preThreaded() {
