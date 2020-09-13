@@ -77,8 +77,6 @@ public class AdjacencyMatrix {
         return adjacencyMatrix[v1][v2];
     }
 
-
-
     //打印邻接表
     public void show(){
         for(int row[] : adjacencyMatrix){
