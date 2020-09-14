@@ -118,13 +118,6 @@ public class SingleLinkedList<T> {
         }
     }
 
-    //反向遍历 栈
-    public void reverseShow(){
-
-    }
-
-
-
     //指定位置节点
     public void getByIndex(int n){
         int offset = 1;
