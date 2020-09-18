@@ -8,7 +8,6 @@ import com.stack.Stack;
 public class PolandNotation {
 
     public static void main(String[] args) {
-        //(1+2)*3-4   1 2 + 3 * 4 -
         String expression = "1+((2+3)*4)-12";
         Stack<String> suffixExpression = PolandNotationConvert.convert(expression);
 
