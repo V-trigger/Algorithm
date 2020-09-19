@@ -113,13 +113,11 @@ public class EightQueen {
         for (int i = 0; i < matrix.length; i++) {
             //纵向是否冲突
             if(matrix[i][col] == 1){
-//                System.out.println("纵向冲突");
                 return false;
             }
             //左下到右上是否冲突
             if(offsetRow1 < row && offsetCol1 < matrix.length){
                 if(matrix[offsetRow1][offsetCol1] == 1){
-//                    System.out.println("减斜向冲突");
                     return false;
                 }
                 offsetRow1++;
@@ -128,7 +126,6 @@ public class EightQueen {
             //左上到右下是否冲突
             if(offsetRow2 < row && offsetCol2 > 0){
                 if(matrix[offsetRow2][offsetCol2] == 1){
-//                    System.out.println("增斜向冲突");
                     return false;
                 }
                 offsetRow2++;
