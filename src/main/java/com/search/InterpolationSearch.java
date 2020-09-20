@@ -25,10 +25,8 @@ public class InterpolationSearch {
 
         if(left > right || value < arr[0] || value > arr[arr.length-1]) return -1;
 
-
         int mid = left + (right-left) * (value - arr[left]) / (arr[right] - arr[left]);
         System.out.println("left="+left+"right="+right+"mid="+mid);
-
 
         if(arr[mid] == value){
             return mid;

@@ -11,7 +11,6 @@ public class SeqSearch {
         int index = search(arr, 672);
         System.out.println(index);
         System.out.println(arr[index]);
-
     }
 
     public static int search(int arr[], int value){

@@ -19,7 +19,6 @@ public class BinarySearch {
         int arr[] = {217, 258, 353, 365, 376, 384, 409, 452, 461, 479, 536, 549, 593, 619, 672, 699, 817, 854, 880, 980,9800};
         ShellSorting.shellSort(arr);
         System.out.println(Arrays.toString(arr));
-//        System.out.println(arr.length-1);
         int index1 = binarySearch(arr, 0,arr.length, 11);
         System.out.println(index1);
         int index2 = binarySearch1(arr, 11);
