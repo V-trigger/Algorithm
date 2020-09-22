@@ -14,19 +14,15 @@ public class MergeSorting {
         int arr1[] = arr.clone();
 
         System.out.println("迭代");
-//        System.out.println(Arrays.toString(arr));
         long l = System.currentTimeMillis();
         mergeSort(arr);
         System.out.println(System.currentTimeMillis() - l );
-//        System.out.println(Arrays.toString(arr));
         System.out.println(ToolSort.isSort(arr));
 
 
         System.out.println("递归");
         l = System.currentTimeMillis();
-//        System.out.println(Arrays.toString(arr1));
         mergeSort1(arr1, 0,  arr1.length-1);
-//        System.out.println(Arrays.toString(arr));
         System.out.println(System.currentTimeMillis() - l );
         System.out.println(ToolSort.isSort(arr));
 
@@ -99,7 +95,6 @@ public class MergeSorting {
         int left, mid, right;
         int len = arr.length;
         for (int i = 1; i < len; i *= 2) {
-//            System.out.println("归并"+i);
             left = 0;
             while (left + i < len) {
                 mid = left + i - 1;

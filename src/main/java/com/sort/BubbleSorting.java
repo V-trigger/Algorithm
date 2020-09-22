@@ -23,7 +23,6 @@ public class BubbleSorting {
         System.out.println(System.currentTimeMillis() - l );
         System.out.println(ToolSort.isSort(arr));
 
-
         l = System.currentTimeMillis();
         System.out.println("冒泡排序 优化1");
         BubbleSorting.bubbleSort1(arr1);
@@ -126,7 +125,6 @@ public class BubbleSorting {
         }
 
     }
-
 
     public static void swap(int arr[], int i, int j){
         arr[i] = arr[i] + arr[j];
