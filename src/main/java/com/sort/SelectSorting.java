@@ -28,7 +28,6 @@ public class SelectSorting {
 
     }
 
-
     //选择排序
     public static void selectSort(int arr[]){
         int min;  //待排序数组的最小值的下标
@@ -42,7 +41,6 @@ public class SelectSorting {
             if(min != i) swap(arr, i, min);
         }
     }
-
 
     public static void swap(int arr[], int i, int j){
         arr[i] = arr[i] + arr[j];

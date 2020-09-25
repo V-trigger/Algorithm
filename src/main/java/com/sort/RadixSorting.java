@@ -50,7 +50,6 @@ public class RadixSorting {
                 index = arr[j] / offset % 10; //offset位数的值,也就是要放入的桶的索引
                 bucket[index][bucketIndex[index]++] = arr[j];  //装到对应的桶
             }
-//            printBucket(bucket);
             //从桶中倒回数组中去
             arrIndex = 0;
             for (int j = 0; j < 10; j++) {
@@ -58,7 +57,6 @@ public class RadixSorting {
                     arr[arrIndex++] = bucket[j][k];
                 }
             }
-//            System.out.println(Arrays.toString(arr));
         }
 
     }
