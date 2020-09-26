@@ -38,7 +38,6 @@ public class KMP {
 
         int i = kmpSearch(str1, str2);
         System.out.println(i);
-
     }
 
     /**
@@ -79,6 +78,5 @@ public class KMP {
         }
         return PMT;
     }
-
 
 }

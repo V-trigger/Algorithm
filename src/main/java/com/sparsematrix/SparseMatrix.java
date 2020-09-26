@@ -26,7 +26,6 @@ public class SparseMatrix {
 
         int[][] sparseMatrix = SparseMatrix.encode(matrix);
 
-
         System.out.println("稀疏矩阵:");
         SparseMatrix.printMatrix(sparseMatrix);
 
@@ -75,8 +74,6 @@ public class SparseMatrix {
 
     //还原始矩阵
     public static int[][] decode(int[][] sparseMatrix){
-        //判断是否是稀疏矩阵
-        //TODO ...
         //创建原始矩阵
         int matrix[][] = new int[sparseMatrix[0][0]][sparseMatrix[0][1]];
 
@@ -86,7 +83,6 @@ public class SparseMatrix {
         }
 
         return matrix;
-
     }
 
     //保存到文件
