@@ -55,7 +55,6 @@ public class StackTest {
         Stack<Integer> numStack = new Stack<>(expression.length()); //保存操作数的栈
         Stack<Character> operateStack = new Stack<>(expression.length()); //保存操作符的栈
 
-
         char buff[] = new char[expression.length()];
         expression.getChars(0,expression.length(), buff, 0);
 
